@@ -13,20 +13,20 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    private ClientRepository repository;
+    private ClientRepository clientRepository;
 
     @GetMapping
     public List<Client> listCustomers() {
-        return repository.findAll();
+        return clientRepository.findAll();
     }
 
     @PostMapping
     public Client createCustomer(@Valid @RequestBody Client client) {
-        return repository.save(client);
+        return clientRepository.save(client);
     }
 
     @DeleteMapping("/{id}")
     public void delCustomer(@PathVariable Long id) {
-        repository.deleteById(id);
+        clientRepository.deleteById(id);
     }
 }
