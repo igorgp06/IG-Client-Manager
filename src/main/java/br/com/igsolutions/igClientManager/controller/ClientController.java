@@ -1,5 +1,6 @@
 package br.com.igsolutions.igClientManager.controller;
 
+import br.com.igsolutions.igClientManager.exception.ResourceNotFoundException;
 import br.com.igsolutions.igClientManager.model.Client;
 import br.com.igsolutions.igClientManager.repository.ClientRepository;
 import br.com.igsolutions.igClientManager.service.ClientService;
@@ -19,6 +20,12 @@ public class ClientController {
     @GetMapping
     public List<Client> listCustomers() {
         return clientService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public Client getCustomerById(@PathVariable Long id) {
+        return clientService.getById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente com o ID " + id + " não encontrado!"));
     }
 
     @PostMapping

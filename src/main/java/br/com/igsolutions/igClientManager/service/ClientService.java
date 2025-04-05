@@ -1,5 +1,6 @@
 package br.com.igsolutions.igClientManager.service;
 
+import br.com.igsolutions.igClientManager.exception.ResourceNotFoundException;
 import br.com.igsolutions.igClientManager.model.Client;
 import br.com.igsolutions.igClientManager.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class ClientService {
                     client.setNumber(newClient.getNumber());
                     return clientRepository.save(client);
                 })
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado!"));
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente com o ID " + id + "não encontrado!"));
     }
 
     public void delete(Long id) {
