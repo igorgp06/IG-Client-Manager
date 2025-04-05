@@ -2,6 +2,7 @@ package br.com.igsolutions.igClientManager.controller;
 
 import br.com.igsolutions.igClientManager.model.Client;
 import br.com.igsolutions.igClientManager.repository.ClientRepository;
+import br.com.igsolutions.igClientManager.service.ClientService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,20 +14,26 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
 
     @GetMapping
     public List<Client> listCustomers() {
-        return clientRepository.findAll();
+        return clientService.listAll();
     }
 
     @PostMapping
     public Client createCustomer(@Valid @RequestBody Client client) {
-        return clientRepository.save(client);
+        return clientService.save(client);
     }
 
     @DeleteMapping("/{id}")
     public void delCustomer(@PathVariable Long id) {
-        clientRepository.deleteById(id);
+        clientService.delete(id);
     }
+
+    @PutMapping("/{id}")
+    public Client updateCustomer(@PathVariable Long id, @Valid @RequestBody Client client) {
+        return clientService.update(id, client);
+    }
+
 }
