@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+/* import dos configurações globais */
+
+@import url('normalize.css');
+@import url('variables.css');

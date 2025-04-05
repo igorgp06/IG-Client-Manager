@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+/* import css global */
+
+@import url('../global/global.css');
+
+/* import do css partials */
+
+@import url('partials/header.css');
