@@ -1,10 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetch("http://localhost:8080/customers")
-        .then(response => response.json())
-        .then(client => renderClients(client))
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao buscar os clientes!");
+            return response.json();
+        })
+        .then(data => {
+            const list = document.getElementById("customers");
+            data.forEach(customer => {
+                const item = document.createElement("li");
+                item.textContent = `${customer.name} - ${customer.email} - ${customer.number}`;
+                list.appendChild(item);
+            });
+        })
         .catch(error => {
-            console.error("Erro ao buscar os clientes: ".error);
-            document.querySelector(".client-list").innerHTML = "<p>Erro ao carregar os clientes.</p>";
+            console.error("Erro ao carregar clientes:", error);
         });
 });
 

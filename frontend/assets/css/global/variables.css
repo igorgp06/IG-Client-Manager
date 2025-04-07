@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/* variables */
+
+:root {
+    /* palheta de cores */
+    --color-1: #F2DC6D;
+    --color-2: #cfcfcf;
+    --color-3: #595959;
+    --color-4: #595959;
+    --color-5: #262626;
+    --color-6: #0D0D0D;
+
+    /* substuição das cores do bootstrap */
+    --bs-primary: var(--color-1);
+    --bs-secondary: var(--color-2);
+    --bs-success: var(--color-3);
+    --bs-info: var(--color-4);
+    --bs-warning: var(--color-5);
+}
