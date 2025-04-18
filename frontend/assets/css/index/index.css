@@ -4,7 +4,7 @@
 
 @import url('../global/global.css');
 
-/* import do css partials */
+/* import css pages */
 
-@import url('partials/header.css');
-@import url('partials/home.css')
+@import url('pages/index-page/home.css');
+@import url('pages/pageRegister/home.css');
