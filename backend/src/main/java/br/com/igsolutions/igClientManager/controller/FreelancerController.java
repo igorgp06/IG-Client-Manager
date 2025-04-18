@@ -7,6 +7,7 @@ import br.com.igsolutions.igClientManager.service.FreelancerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,6 +18,12 @@ public class FreelancerController {
     @Autowired
     private FreelancerService freelancerService;
 
+    // FERRAMENTA APENAS PARA DEBUG
+    @GetMapping
+    public List<Freelancer> listAll() {
+        return freelancerService.listAll();
+    }
+
     @PostMapping("/register")
     public Freelancer authenticate(@RequestBody FreelancerDTO dto) {
         return freelancerService.registerFreelancer(dto);
@@ -25,6 +32,11 @@ public class FreelancerController {
     @PostMapping("/login")
     public Freelancer login(@RequestBody LoginDTO dto) {
         return freelancerService.login(dto);
+    }
+
+    @DeleteMapping
+    public void delCustomer(@PathVariable Long id) {
+        freelancerService.delete(id);
     }
 }
 

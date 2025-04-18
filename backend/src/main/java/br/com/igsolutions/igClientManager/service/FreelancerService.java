@@ -7,6 +7,7 @@ import br.com.igsolutions.igClientManager.repository.FreelancerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +15,11 @@ public class FreelancerService {
 
     @Autowired
     private FreelancerRepository freelancerRepository;
+
+    // FERRAMENTA APENAS PARA DEBUG
+    public List<Freelancer> listAll() {
+        return freelancerRepository.findAll();
+    }
 
     public Freelancer registerFreelancer(FreelancerDTO dto) {
         if (freelancerRepository.findByEmail(dto.getEmail()).isPresent()) {
@@ -36,5 +42,9 @@ public class FreelancerService {
             throw new RuntimeException("E-mail ou senha inválidos!");
         }
         return freelancer.get();
+    }
+
+    public void delete(Long id) {
+        freelancerRepository.deleteById(id);
     }
 }

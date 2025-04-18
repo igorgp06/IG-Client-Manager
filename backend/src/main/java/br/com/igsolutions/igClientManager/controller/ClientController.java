@@ -17,6 +17,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
+    // FERRAMENTA APENAS PARA DEBUG
     @GetMapping
     public List<Client> listCustomers() {
         return clientService.listAll();
